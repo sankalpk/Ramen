@@ -5,9 +5,10 @@
 
 window.addEventListener('load', function(){
     (function(){
+
         var g = {
             handleLogoutResult: function(err, result){
-                window.location = 'index.html';
+                window.location = '/';
             }
         }
 
@@ -24,6 +25,7 @@ window.addEventListener('load', function(){
         //==================
         //  DOM
         //==================
+
         var logoutButton = document.getElementById('logoutButton');
 
         logoutButton.onclick = function(){
@@ -37,7 +39,7 @@ window.addEventListener('load', function(){
         function post(url, data, done){
             var request = new XMLHttpRequest();
             var async = true;
-            request.open('post', RAMEN_PATH.server+url, async);
+            request.open('post', url, async);
             request.onload = function(){
                 if (done !== undefined){
                     var res = request.responseText
