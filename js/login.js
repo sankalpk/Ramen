@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
 
         var g = {
             onLoginSuccess: function(){
-                window.location = '/';
+                window.location = RAMEN_PATH.home;
             },
             onRegisterSuccess: function(){
                 var username = usernameInput.value;
@@ -114,7 +114,7 @@ window.addEventListener('load', function(){
         function post(url, data, done){
             var request = new XMLHttpRequest();
             var async = true;
-            request.open('post', url, async);
+            request.open('post', RAMEN_PATH.server+url, async);
             request.onload = function(){
                 if (done !== undefined){
                     var res = request.responseText

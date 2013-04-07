@@ -1,6 +1,7 @@
 //Note this file is required on every page
-var RAMENSERVER = 'http://128.237.185.58:3000';
-var RAMEN_PATH = function(){
-	this.server = 'http://128.237.185.58:3000';
-	this.home = 'home.html'
-}
+var RAMEN_PATH = {
+	"server"	: 'http://128.237.185.58:3000',
+	"home"		: "home.html",
+	"login"		: "login.html",
+	"demos"		: "index.html"
+};
