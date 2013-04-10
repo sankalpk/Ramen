@@ -1,9 +1,3 @@
-function onPhotoDataSuccess(imageData) {
-  var myImage = document.getElementById('myImage');
-  myImage.style.display = 'block';
-  myImage.src = "data:image/jpeg;base64," + imageData;
-}
-
 function capturePhoto() {
 	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
 		quality: 			50,
@@ -11,6 +5,12 @@ function capturePhoto() {
 		targetWidth: 		320,
 		correctOrientation: true
 	});
+}
+
+function onPhotoDataSuccess(imageData) {
+  var myImage = document.getElementById('myImage');
+  myImage.style.display = 'block';
+  myImage.src = "data:image/jpeg;base64," + imageData;
 }
 
 function onFail(message) {
