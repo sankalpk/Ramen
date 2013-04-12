@@ -1,0 +1,179 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+*/
+
+/* General 
+ * --------------------------------------------------------------------------*/
+body{
+ 	font-family: 'Open Sans', sans-serif;
+}
+
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+/* Logo
+ * --------------------------------------------------------------------------*/
+#logo-container{
+	text-align: center;
+}
+
+#logo{
+	width: 250px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#logo-text{
+	text-align: center;
+	font-size: 2em;
+	font-weight: 600;
+}
+
+/* Buttons (credit: http://designmodo.github.io/Flat-UI/)
+ * --------------------------------------------------------------------------*/
+.btn {
+  border: none;
+  background: #34495e;
+  color: white;
+  font-size: 16.5px;
+  text-decoration: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; }
+  .btn:hover, .btn:focus {
+    background-color: #4e6d8d;
+    color: white;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+    -webkit-backface-visibility: hidden; }
+  .btn:active, .btn.active {
+    background-color: #2c3e50;
+    color: rgba(255, 255, 255, 0.75);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  .btn.disabled, .btn[disabled] {
+    background-color: #95a5a6;
+    color: white; }
+  .btn.btn-large {
+    padding-bottom: 12px;
+    padding-top: 13px; }
+  .btn.btn-primary {
+    background-color: #1abc9c; }
+    .btn.btn-primary:hover, .btn.btn-primary:focus {
+      background-color: #2fe2bf; }
+    .btn.btn-primary:active, .btn.btn-primary.active {
+      background-color: #16a085; }
+  .btn.btn-info {
+    background-color: #3498db; }
+    .btn.btn-info:hover, .btn.btn-info:focus {
+      background-color: #5dade2; }
+    .btn.btn-info:active, .btn.btn-info.active {
+      background-color: #2383c4; }
+  .btn.btn-danger {
+    background-color: #e74c3c; }
+    .btn.btn-danger:hover, .btn.btn-danger:focus {
+      background-color: #ec7063; }
+    .btn.btn-danger:active, .btn.btn-danger.active {
+      background-color: #dc2d1b; }
+  .btn.btn-success {
+    background-color: #2ecc71; }
+    .btn.btn-success:hover, .btn.btn-success:focus {
+      background-color: #55d98d; }
+    .btn.btn-success:active, .btn.btn-success.active {
+      background-color: #27ad60; }
+  .btn.btn-warning {
+    background-color: #f1c40f; }
+    .btn.btn-warning:hover, .btn.btn-warning:focus {
+      background-color: #f4d03f; }
+    .btn.btn-warning:active, .btn.btn-warning.active {
+      background-color: #cea70c; }
+  .btn-toolbar .btn {
+    font-size: 18px;
+    padding: 10px 14px 9px; }
+    .btn-toolbar .btn:first-child {
+      -webkit-border-radius: 6px 0 0 6px;
+      -moz-border-radius: 6px 0 0 6px;
+      border-radius: 6px 0 0 6px; }
+    .btn-toolbar .btn:last-child {
+      -webkit-border-radius: 0 6px 6px 0;
+      -moz-border-radius: 0 6px 6px 0;
+      border-radius: 0 6px 6px 0; }
+
+
+/* Forms
+ * --------------------------------------------------------------------------*/
+input[type=text],
+input[type=email],
+input[type=password]{
+	width: 150px;
+	height: 20px;
+	margin-bottom: 3px;
+}
+
+input[type=submit]{
+	width:150px;
+	height: 30px;
+	margin-top: 10px;
+	-webkit-appearance:none;
+	background-color: #04819E;
+}
+
+
+
+/* Login + Register
+ * --------------------------------------------------------------------------*/
+#login-form{
+	text-align: center;
+	width: 250px;
+	display: block;
+	margin: 1em auto 0em auto;
+}
+
+#login-form-footer{
+	width: 300px;
+	display: block;
+	margin: 1em auto 0em auto;
+	font-color: #EEE;
+	font-size: small;
+	text-align: center;
+}	
+
+
+/* Home
+ * --------------------------------------------------------------------------*/
+.home-row{
+	height: 45%;
+}
+
+.home-icon{
+	display: inline-block;
+	width: 45%;
+	text-align: center;
+	clear: both;
+	font-weight: 600;
+	margin-bottom: 5%;
+}
+
+.home-icon img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.home-icon p{
+	margin-top: 0px;
+}
+
