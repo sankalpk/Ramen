@@ -1,4 +1,4 @@
-vvar canvas, context;
+var canvas, context;
 var clickAreas = [];
 var clickAreaIndex = 0;
 

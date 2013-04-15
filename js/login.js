@@ -53,17 +53,22 @@ window.addEventListener('load', function(){
         var usernameInput = document.getElementById('usernameInput');
         var passwordInput = document.getElementById('passwordInput');
 
-        loginButton.onclick = function(){
-            var username = usernameInput.value;
-            var password = passwordInput.value;
+        if(loginButton){
+            loginButton.onclick = function(){
+                var username = usernameInput.value;
+                var password = passwordInput.value;
 
-            login(username, password);
+                login(username, password);
+            }
         }
-        registerButton.onclick = function(){
-            var username = usernameInput.value;
-            var password = passwordInput.value;
 
-            register(username, password);
+        if(registerButton){
+            registerButton.onclick = function(){
+                var username = usernameInput.value;
+                var password = passwordInput.value;
+
+                register(username, password);
+            }
         }
 
         //==================

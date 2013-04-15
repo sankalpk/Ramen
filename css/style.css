@@ -191,6 +191,14 @@ input[type=submit]{
 	margin: 1em auto 0em auto;
 }
 
+#login-form button{
+  width:150px;
+  height: 30px;
+  margin-top: 10px;
+  -webkit-appearance:none;
+  background-color: #04819E
+}
+
 #login-form-footer{
 	width: 300px;
 	display: block;

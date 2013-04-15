@@ -8,6 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<!-- Google WebFonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/setup.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
 	<div id="logo-container">
@@ -18,15 +20,13 @@
 	</div>
 
 	<div id="login-form">
-		<form action="login">
-			<input type="email" name="email" placeholder="Email" required></input><br/>
-			<input type="password" name="password" placeholder="Password" required></input><br/>
-			<input type="submit" class="btn btn-block"value="Login"></input><br/>
-		</form>
+			<input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
+			<input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
+			<button type="submit" id="loginButton" class="btn btn-block">Login</button><br/>
 	</div>
 	
 	<div id="login-form-footer">
-		Don't have an account? <a href="/register"><b>Sign up.</b></a>	
+		Don't have an account? <a href="register.html"><b>Sign up.</b></a>	
 	</div>
 
 </body>
