@@ -8,10 +8,59 @@ body{
  	font-family: 'Open Sans', sans-serif;
 }
 
-
 a{
 	text-decoration: none;
 	color: black;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.headline{
+  text-align: center;
+}
+
+.description{
+  text-align: center;
+}
+
+.description input{
+  text-align: center;
+}
+
+/* Navigation Bar
+ * --------------------------------------------------------------------------*/
+.nav-container{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav{
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  background-color: #EEE;
+}
+
+.nav-spacer-1{
+  height: 40px;
+  width: 100%;
+}
+
+.nav-spacer-2{
+  height: 80px;
+  width: 100%;
+}
+
+.option-half{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  text-align: center;
 }
 
 /* Logo
@@ -154,6 +203,14 @@ input[type=submit]{
 
 /* Home
  * --------------------------------------------------------------------------*/
+#home-buttons{
+  position: absolute;
+  height: 350px;
+  width: 100%;
+  top: 50%;
+  margin-top: -175px;
+}
+
 .home-row{
 	height: 45%;
 }
@@ -177,3 +234,87 @@ input[type=submit]{
 	margin-top: 0px;
 }
 
+/* Instructions
+ * --------------------------------------------------------------------------*/
+.instruction-visual{
+
+}
+
+.instruction-nav{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width:  100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Capture Screens
+ * --------------------------------------------------------------------------*/
+.screen-preview-container{
+  height: 200px;
+  width: 90%;
+  overflow: hidden;
+  position: relative;
+  left: 5%;
+}
+
+#screen-name-form-wrapper{
+  width: 100%;
+}
+
+#screen-name-form{
+  width: 300px;
+  text-align: left;
+  position: relative;
+  left: 50%;
+  margin-left: -150px;
+}
+
+#screen-name-form input{
+  width: 250px;
+}
+
+#screen-names-nav{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width:  100%;
+  height: 50px;
+  text-align: center;
+}
+
+
+/* Set Clickable Areas
+ * --------------------------------------------------------------------------*/
+#c-set-clickable-area{
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  background-color: gray; 
+}
+
+/* Route Clickable Areas
+ * --------------------------------------------------------------------------*/
+#c-route-clickable-area{
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  background-color: gray; 
+}
+
+ul#route-list li{
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin: 10px;
+}
+
+
+/* Done
+ * --------------------------------------------------------------------------*/

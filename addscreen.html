@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ramen - Creating</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Mobile-related meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Google WebFonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/cordova-2.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/picture.js"></script>
+    <script type="text/javascript" src="js/stepper.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            displayScreen("0");
+        };
+    </script>
+</head>
+<body>
+
+    <!-- [0] Instructions 
+    ========================================================================-->
+    <div id="0" class="step">
+        <div class="nav-container">
+            <div class="nav"></div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div class="headline">
+            <h1>1: Adding Screens</h1>
+        </div>
+        <div class="description">
+            First, take pictures of your paper protototype screens through Ramen. Make sure the first picture is the "start screen" in your prototype.
+        </div>
+        <div class="instruction-visual"></div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="capturePhoto();">Next</button>
+        </div>
+    </div>
+
+    <!-- [1] Screen Naming 
+    ========================================================================-->
+    <div id="1" class="step">
+        <div class="headline">
+            <h1>Screen Captured!</h1>
+        </div>
+
+        <div style="text-align:center;">
+            <div class="screen-preview-container">
+                <img class="screen-preview"></img> 
+            </div>
+            <div id="screen-name-form-wrapper">
+                <div id="screen-name-form">
+                    <p>Screen Name</p>
+                    <input type="text" required></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction-nav">
+            <button class="btn" onclick="capturePhoto()">Save and Capture Next Screen</button><br/>
+            <button class="btn" onclick="">Save and Finish Capturing</button>
+        </div>
+    </div>
+
+</body>
+</html>
