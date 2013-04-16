@@ -7,4 +7,21 @@ function displayScreen(screenNum){
         else
             steps[i].style.display = "none";
     }
+
+
+    /* Transition functions 
+     * Any step specific functionality should be initiated here 
+     * ========================================================*/
+    if(screenNum === "6"){
+        s = new setclickables();
+        s.setup();
+    }
+    else if(screenNum === "8"){
+        /* TODO: Add functions to remove listeners/timers */
+        r = new routeclickables();
+        r.setup();
+    }
+    else if(screenNum === "11"){
+        /* AJAX updates the server with clickable area information */   
+    }
 }

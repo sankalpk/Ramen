@@ -35,7 +35,14 @@ function saveNamedScreen(){
         data: {"screen_name": name, "image": imageData},
         url: RAMEN_PATH.server + "/prototypes/" + prototype._id + "/addScreen",
         success: function(data){
-            $("#img-store").append("<img id='" + data.screen_id + "'src='" + imageData + "'>");
+            /* Add the screen to both the image store and to the prototypes object */
+            $("#img-store").append("<img class='stored-img' id='" + data.screen_id + "'src='" + imageData + "'>");
+            var screen = new Object();
+            screen.name = screen_name;
+            screen.screen_id = data.screen_id;
+            screen.image_path = data.image_path;
+            screen.clickableAreas = [];
+            prototype.screens.push(screen);
         } 
     });
 

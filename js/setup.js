@@ -3,3 +3,5 @@ var RAMEN_PATH = {
 };
 
 var prototype = new Object();
+
+var r;

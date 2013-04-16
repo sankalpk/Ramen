@@ -16,13 +16,15 @@
 	<script type="text/javascript" src="js/nameprototype.js"></script>
 	<script type="text/javascript" src="js/picture.js"></script>
 	<script type="text/javascript" src="js/setclickables.js"></script>
+	<script type="text/javascript" src="js/routeclickables.js"></script>
 
-
+    <!-- Onload -->
 	<script type="text/javascript">
 		window.onload = function(){
 			displayScreen("0");
 		}
 	</script>
+
 </head>
 <body>
 	<!-- Hidden Image Store
@@ -204,10 +206,10 @@
         <div class="nav-container">
             <div class="nav">
                 <div class="option-half">
-                    <button class="btn" onclick="saveScreen();">Save Screen</button>
+                    <button class="btn" onclick="s.saveScreen();">Save Screen</button>
                 </div>
                 <div class="option-half">
-                    <button class="btn" onclick="clearScreen();">Clear Screen</button>
+                    <button class="btn" onclick="s.clearScreen();">Clear Screen</button>
                 </div>
             </div>
         </div>
@@ -230,7 +232,7 @@
         </div>
         <div class="instruction-visual"></div>
         <div class="instruction-nav">
-            <button class="btn" onclick="displayScreen('1')">Next</button>
+            <button class="btn" onclick="displayScreen('9')">Next</button>
         </div>
     </div>
 
@@ -240,15 +242,15 @@
         <div class="nav-container">
             <div class="nav">
                 <div class="option-half">
-                    <button class="btn" onclick="next();">Undo</button>
+                    <button class="btn" onclick="r.undo();">Undo</button>
                 </div>
                 <div class="option-half">
-                    <button class="btn" onclick="undo();">Next</button>
+                    <button class="btn" onclick="r.next();">Next</button>
                 </div>  
             </div>
         </div>
         <div class="nav-spacer-1"></div>
-        <canvas id="c-set-clickable-area"></canvas>
+        <canvas id="c-route-clickable-area"></canvas>
     </div>
     
     
@@ -261,6 +263,7 @@
         </div>
         <div class="nav-spacer-1"></div>
         <ul id="route-list">
+        	<!--
             <li>
                 <a href="">
                     <img class="s" src=""><p>Screen 1</p>
@@ -278,6 +281,7 @@
                     <img class="s" src=""><p>Screen 4</p>
                 </a>
             </li>
+        	-->
         </ul>
     </div>
 
