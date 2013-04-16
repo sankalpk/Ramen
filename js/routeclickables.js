@@ -149,5 +149,6 @@ var routeclickables = function(){
     if(clickAreaIndex > 0)
       clickAreaIndex--;
     routing = false;
+    update();
   }
 }
