@@ -16,8 +16,8 @@ var setclickables = function(){
     context = canvas.getContext("2d");
 
     /* Set the canvas width and height according to the phone size */
-    canvas.width = $(window).width();
-    canvas.height = $(window).height(); - 40; //FIXME: 40 is the height of nav-spacer-2
+    canvas.width = screen_width;
+    canvas.height = screen_height - 40; //FIXME: 40 is the height of nav-spacer-2
 
     /* Listen to touch interations on the canvas */
     canvas.addEventListener("touchstart",    beginDrag);

@@ -29,16 +29,18 @@ function saveNamedScreen(){
     var imageData = document.getElementsByClassName("screen-preview")[0].src;
     var screen_name = $("#screen-name").val();
 
+    console.log("Screen name: " +  screen_name);
+
     /* Upload the image to the server */
     $.ajax({
         type: "put",
-        data: {"screen_name": name, "image": imageData},
+        data: {"screen_name": screen_name, "image": imageData},
         url: RAMEN_PATH.server + "/prototypes/" + prototype._id + "/addScreen",
         success: function(data){
             /* Add the screen to both the image store and to the prototypes object */
             $("#img-store").append("<img class='stored-img' id='" + data.screen_id + "'src='" + imageData + "'>");
             var screen = new Object();
-            screen.name = screen_name;
+            screen.screen_name = screen_name;
             screen.screen_id = data.screen_id;
             screen.image_path = data.image_path;
             screen.clickableAreas = [];

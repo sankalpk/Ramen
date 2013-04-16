@@ -22,6 +22,6 @@ function displayScreen(screenNum){
         r.setup();
     }
     else if(screenNum === "11"){
-        /* AJAX updates the server with clickable area information */   
+
     }
 }

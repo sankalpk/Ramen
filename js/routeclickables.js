@@ -12,8 +12,8 @@ var routeclickables = function(){
      context = canvas.getContext("2d");
 
      /* Set the canvas width and height according to the phone size */
-     canvas.width = $(window).width();
-     canvas.height = $(window).height() - 40; //FIXME: 40 is the height of nav-spacer-1
+     canvas.width = screen_width;
+     canvas.height = screen_height; - 40; //FIXME: 40 is the height of nav-spacer-1
 
 
     /* Get screens array from prototype */
@@ -97,7 +97,7 @@ var routeclickables = function(){
   function getScreenNameById(screen_id){
     for(var i=0; i<screens.length; i++){
       if(screens[i].screen_id === screen_id){
-        return screens[i].name;
+        return screens[i].screen_name;
       }
     }
 
@@ -123,8 +123,18 @@ var routeclickables = function(){
       routing = false;
       clickAreaIndex++;
 
-      /* Advance to the next screen */
+      /* Advance to the next screen upload clickableAreas for this screen to the server*/
       if(clickAreaIndex === screens[screenIndex].clickableAreas.length){
+        /* AJAX updates the server with clickable area information */   
+        $.ajax({
+            type: "put",
+            data: {"screen_id": screens[screenIndex].screen_id, "clickable_areas": screens[screenIndex].clickableAreas},
+            url: RAMEN_PATH.server + "/prototypes/" + prototype._id + "/setClickableAreas",
+            success: function(data){
+              console.log("uploaded clickable areas to the server");
+            } 
+        });
+
         screenIndex++;
         clickAreaIndex = 0;
       }
