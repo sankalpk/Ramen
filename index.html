@@ -8,18 +8,300 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<!-- Google WebFonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/cordova-2.5.0.js"></script>
+	<script type="text/javascript" src="js/stepper.js"></script>	
+	<script type="text/javascript" src="js/setup.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/nameprototype.js"></script>
+	<script type="text/javascript" src="js/picture.js"></script>
+	<script type="text/javascript" src="js/setclickables.js"></script>
+
+
+	<script type="text/javascript">
+		window.onload = function(){
+			displayScreen("0");
+		}
+	</script>
 </head>
 <body>
-	Use the following links to launch...
-	<br/>
-	<br/>
-	<a href="addscreen.html">add screen</a><br/>
-	<a href="setclickable.html">set clickable areas</a><br/>
-	<a href="done-creating.html">done creating</a><br/>
-	<a href="home.html">home</a><br/>
-	<a href="routeclickable.html">route clickable areas</a><br/>
-	<a href="instruction.html">instructions</a><br/>
-	<a href="login.html">login</a><br/>
-	<a href="login_old.html">old login</a><br/>
+	<!-- Hidden Image Store
+    ========================================================================-->
+	<div id="img-store">
+	</div>
+
+	<!-- [0] Login
+    ========================================================================-->
+	<div id="0" class="step">
+		<div id="logo-container">
+			<div id="logo">
+				<img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
+				<div id="logo-text">ramen</div>
+			</div>
+		</div>
+
+		<div id="login-form">
+				<input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
+				<input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
+				<button type="submit" id="loginButton" class="btn btn-block">Login</button><br/>
+		</div>
+		
+		<div id="login-form-footer">
+			Don't have an account? <a onclick="displayScreen('1')"><b>Sign up.</b></a>	
+		</div>
+	</div>
+
+
+
+	<!-- [1] Register
+    ========================================================================-->
+	<div id="1" class="step">
+	    <div id="logo-container">
+	        <div id="logo">
+	            <img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
+	            <div id="logo-text">ramen</div>
+	        </div>
+	    </div>
+
+	    <div id="login-form">
+	            <input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
+	            <input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
+	            <button type="submit" id="registerButton" class="btn btn-block">Register</button><br/>
+	    </div>
+	    
+	    <div id="login-form-footer">
+	        Already have an account? <a onclick="displayScreen('0')"><b>Log in.</b></a>  
+	    </div>
+	</div>
+
+
+	<!-- [2] Home
+    ========================================================================-->
+	<div id="2" class="step">
+		<div id="home-buttons">
+		<div class="home-row">
+			<div class="home-icon">
+				<a onclick="displayScreen('3')">
+					<img src="img/noun_project_3927.png" width="100px" height="100px">
+					<p>Create</p>
+				</a>
+			</div>
+
+			<div class="home-icon">
+				<a onclick="#">
+					<img src="img/noun_project_10986.png" width="100px" height="100px">
+					<p>	My Prototypes </p>
+				</a>
+			</div>
+		</div>
+
+		<div class="home-row">
+			<div class="home-icon">
+				<a onclick="#">
+					<img src="img/noun_project_2778.png" width="90px" height="90px" style="margin-bottom:10px">
+					<p> Analytics </p>
+				</a>
+			</div>
+
+			<div class="home-icon">
+				<a onclick="#">
+					<img src="img/noun_project_11801.png" width="90px" height="90px" style="margin-bottom:10px">
+					<p> Settings </p>
+				</a>
+			</div>
+		</div>
+		</div>
+	</div>
+
+
+	<!-- [3] Name Prototype
+    ========================================================================-->
+    <div id="3" class="step">
+        <div class="nav-container">
+            <div class="nav"></div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div class="headline">
+            <h1>0: Name your Prototype</h1>
+        </div>
+        <div class="description">
+            Screen Name<br/>
+            <input id="prototype-name" type="text"></input>
+        </div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="namePrototype()">Next</button>
+        </div>
+    </div>
+
+
+    <!-- [4] Add Screen Instructions 
+    ========================================================================-->
+    <div id="4" class="step">
+        <div class="nav-container">
+            <div class="nav"></div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div class="headline">
+            <h1>1: Adding Screens</h1>
+        </div>
+        <div class="description">
+            First, take pictures of your paper protototype screens through Ramen. Make sure the first picture is the "start screen" in your prototype.
+        </div>
+        <div class="instruction-visual"></div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="capturePhoto();">Next</button>
+        </div>
+    </div>
+
+    <!-- [5] Screen Naming 
+    ========================================================================-->
+    <div id="5" class="step">
+        <div class="headline">
+            <h1>Screen Captured!</h1>
+        </div>
+
+        <div style="text-align:center;">
+            <div class="screen-preview-container">
+                <img class="screen-preview"></img> 
+            </div>
+            <div id="screen-name-form-wrapper">
+                <div id="screen-name-form">
+                    <p>Screen Name</p>
+                    <input type="text" id="screen-name" required></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction-nav">
+            <button class="btn" onclick="saveAndCapture();">Save and Capture Next Screen</button><br/>
+            <button class="btn" onclick="saveAndFinish();">Save and Finish Capturing</button>
+        </div>
+    </div>
+
+
+    <!-- [6] Setting Clickable Areas Instructions 
+    ========================================================================-->
+    <div id="6" class="step">
+        <div class="nav-container">
+            <div class="nav"></div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div class="headline">
+            <h1>2: Setting Clickable Areas</h1>
+        </div>
+        <div class="description">
+            For each screen, specify clickable areas for your user. 
+        </div>
+        <div class="instruction-visual"></div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="displayScreen('7')">Next</button>
+        </div>
+    </div>
+
+    <!-- [7] Setting Clickable Areas
+    ========================================================================-->
+    <div id="7" class="step">
+        <div class="nav-container">
+            <div class="nav">
+                <div class="option-half">
+                    <button class="btn" onclick="saveScreen();">Save Screen</button>
+                </div>
+                <div class="option-half">
+                    <button class="btn" onclick="clearScreen();">Clear Screen</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <canvas id="c-set-clickable-area"></canvas>
+    </div>
+
+    <!-- [8] Routing Clickable Areas Instructions 
+    ========================================================================-->
+    <div id="8" class="step">
+        <div class="nav-container">
+            <div class="nav"></div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div class="headline">
+            <h1>3: Routing Clickable Areas</h1>
+        </div>
+        <div class="description">
+            For each screen, identify the destination screen for each clickable area.
+        </div>
+        <div class="instruction-visual"></div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="displayScreen('1')">Next</button>
+        </div>
+    </div>
+
+    <!-- [9] Routing Clickable Areas
+    ========================================================================-->
+    <div id="9" class="step">
+        <div class="nav-container">
+            <div class="nav">
+                <div class="option-half">
+                    <button class="btn" onclick="next();">Undo</button>
+                </div>
+                <div class="option-half">
+                    <button class="btn" onclick="undo();">Next</button>
+                </div>  
+            </div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <canvas id="c-set-clickable-area"></canvas>
+    </div>
+    
+    
+    <!-- [10] Routing List
+    ========================================================================-->
+    <div id="10" class="step">
+        <div class="nav-container">
+            <div class="nav">
+            </div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <ul id="route-list">
+            <li>
+                <a href="">
+                    <img class="s" src=""><p>Screen 1</p>
+                </a>
+            </li><li>
+                <a href="">
+                    <img class="s" src=""><p>Screen 2</p>
+                </a>
+            </li><li>
+                <a href="">
+                    <img class="s" src=""><p>Screen 3</p>
+                </a>
+            </li><li>
+                <a href="">
+                    <img class="s" src=""><p>Screen 4</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- [11] Done!
+    ========================================================================-->
+    <div id="11" class="step">
+	    <div class="headline">
+	        <h1>Prototype Created!</h1>
+	    </div>
+	    <div class="description">
+	        <p>
+	            You can access your prototype by visiting the link. Click to copy.
+	        </p>
+	        <p>
+	            <input type="url" value="http://www.google.com"></input>
+	        </p>
+	    </div>
+	    <div class="instruction-visual"></div>
+	    <div class="instruction-nav">
+	        <button class="btn">Try it now</button>
+	        <button class="btn">Share</button>
+	    </div>
+	</div>
+
 </body>
 </html>

@@ -7,8 +7,8 @@ function capturePhoto() {
 	});
 }
 
-/* Fill in all screen-preview image data */
 function onPhotoDataSuccess(imageData) {
+    /* Fill in all screen-preview image data */
     var imgs = document.getElementsByClassName("screen-preview");
     for(var i=0; i<imgs.length; i++){
         var img = imgs[i];
@@ -17,7 +17,7 @@ function onPhotoDataSuccess(imageData) {
     }
 
     /* Show the naming screen */
-    displayScreen("1");
+    displayScreen("5");
 }
 
 function onFail(message) {
@@ -27,10 +27,29 @@ function onFail(message) {
 /* Uploads the named screen from the preview to the database */
 function saveNamedScreen(){
     var imageData = document.getElementsByClassName("screen-preview")[0].src;
-    var name = document.getElementById("screen-name-form").value;
+    var screen_name = $("#screen-name").val();
 
-    /* TODO: AJAX Here */
+    /* Upload the image to the server */
+    $.ajax({
+        type: "put",
+        data: {"screen_name": name, "image": imageData},
+        url: RAMEN_PATH.server + "/prototypes/" + prototype._id + "/addScreen",
+        success: function(data){
+            $("#img-store").append("<img id='" + data.screen_id + "'src='" + imageData + "'>");
+        } 
+    });
 
     /* Clear the form for later use */
-    document.getElementById("screen-name-form").value = "";
+    document.getElementById("screen-name").value = "";
+}
+
+
+function saveAndCapture(){
+    saveNamedScreen();
+    capturePhoto();
+}
+
+function saveAndFinish(){
+    saveNamedScreen();
+    displayScreen("6");
 }

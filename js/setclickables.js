@@ -1,3 +1,5 @@
+var function =
+
 var canvas, context;
 var clickAreas = [];
 var currentClickArea;

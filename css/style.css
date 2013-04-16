@@ -29,6 +29,10 @@ ul{
   text-align: center;
 }
 
+#img-store{
+  display: none;
+}
+
 /* Navigation Bar
  * --------------------------------------------------------------------------*/
 .nav-container{

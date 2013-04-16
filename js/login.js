@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
 
         var g = {
             onLoginSuccess: function(){
-                window.location = RAMEN_PATH.home;
+                displayScreen("2");
             },
             onRegisterSuccess: function(){
                 var username = usernameInput.value;
