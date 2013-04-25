@@ -136,6 +136,7 @@ var routeclickables = function(){
         });
 
         screenIndex++;
+        addName(screens[screenIndex].name);
         clickAreaIndex = 0;
       }
 
@@ -160,5 +161,9 @@ var routeclickables = function(){
       clickAreaIndex--;
     routing = false;
     update();
+  }
+
+  function addName(name){
+    $("#route-screen-name").html(""+name);
   }
 }

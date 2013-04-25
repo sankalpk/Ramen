@@ -327,6 +327,15 @@ ul#route-list li{
   margin: 10px;
 }
 
+#route-screen-name{
+  position:absolute;
+  width:150px;
+  height:20px;
+  background-color:rgba(0,0,0,.75);
+  color:white;
+  bottom:10px;
+  text-align:center;
+}
 
 /* Done
  * --------------------------------------------------------------------------*/
