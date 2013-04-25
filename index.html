@@ -24,6 +24,23 @@
             screen_width = $(window).width();
             screen_height = $(window).height();
             displayScreen("0");
+
+            /* Hides buttons when keyboard pops up */
+            window.addEventListener("resize", function(){
+                console.log("resizing");
+                if($(window).height()<screen_height){
+                    $(".instruction-nav").each(function(){
+                        console.log("Show",this);
+                        $(this).hide();
+                    });
+                }
+                else{
+                    $(".instruction-nav").each(function(){
+                        console.log("Hide",this);
+                        $(this).show();
+                    });
+                }
+            })
 		}
 	</script>
 
