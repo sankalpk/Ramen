@@ -99,9 +99,10 @@ var setclickables = function(){
     /* Draw the current screen in the background */
     var img = new Image();
     img.onload = function(){
-      ctx.drawImage(img,0,0);
+      context.drawImage(img,0,0);
     };
-    img.src = $("#"+protototype.screens[currentScreenIndex].screen_id).attr("src");
+    console.log($("#"+prototype.screens[currentScreenIndex].screen_id).attr("src"));
+    img.src = $("#"+prototype.screens[currentScreenIndex].screen_id).attr("src");
 
 
     /* Draw saved click areas */
