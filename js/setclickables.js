@@ -4,6 +4,8 @@ var setclickables = function(){
   var clickAreas = [];
   var currentClickArea;
   var closeImg;
+  var img;
+  //var imgloaded = false;
 
   /* This array is filled in by the server when the screens are created
   /* Each element of this array contains: 
@@ -29,7 +31,11 @@ var setclickables = function(){
 
     closeImg = new Image();
     closeImg.src = "img/glyphicons_free/glyphicons/png/glyphicons_192_circle_remove.png";
-  
+    img = new Image();
+    img.src = $("#"+prototype.screens[currentScreenIndex].screen_id).attr("src");  
+    // img.onload = function(){
+    //   imgloaded = true;
+    // }
   }
 
   /* Initializes a click area */
@@ -97,14 +103,8 @@ var setclickables = function(){
 
 
     /* Draw the current screen in the background */
-    var img = new Image();
-    img.onload = function(){
-      context.drawImage(img,0,0);
-    };
-    console.log($("#"+prototype.screens[currentScreenIndex].screen_id).attr("src"));
-    img.src = $("#"+prototype.screens[currentScreenIndex].screen_id).attr("src");
-
-
+    console.log("image loaded");
+    context.drawImage(img,0,0);
     /* Draw saved click areas */
     clickAreas.forEach(function(clickArea){
       /* Draw the clickable rectangle */
