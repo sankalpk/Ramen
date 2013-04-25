@@ -46,18 +46,18 @@ var routeclickables = function(){
 
       /* Already routed areas */
       if(i<clickAreaIndex){
-        context.fillStyle = "#EEF";
+        context.fillStyle = "rgba(77,77,77,.5)";
         /* TODO: Draw route-to text */
       }
 
       /* The area we are currently routing */
       else if(i===clickAreaIndex){
-        context.fillStyle = "#FEE";
+        context.fillStyle = "rgba(245,252,18,.5)";
       }
 
       /* Areas that have yet to be routed */
       else{
-        context.fillStyle = "#EEE";
+        context.fillStyle = "rgba(181,181,181,.5)";
       }
 
       context.fillRect(clickArea.x, clickArea.y, clickArea.width, clickArea.height);

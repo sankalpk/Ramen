@@ -10,8 +10,7 @@ function displayScreen(screenNum){
 
 
     /* Transition functions 
-     * Any step specific functionality should be initiated here 
-     * ========================================================*/
+     * Any step specific functionality should be initiated here */
     if(screenNum === "6"){
         s = new setclickables();
         s.setup();
