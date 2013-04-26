@@ -4,7 +4,7 @@ var routeclickables = function(){
   var screenIndex = 0;
   var screens = [];
   var routing = false;
-
+  var screenImg;
 
 
   this.setup = function(){
@@ -13,30 +13,42 @@ var routeclickables = function(){
 
      /* Set the canvas width and height according to the phone size */
      canvas.width = screen_width;
-     canvas.height = screen_height; - 40; //FIXME: 40 is the height of nav-spacer-1
+     canvas.height = screen_height - 40; //FIXME: 40 is the height of nav-spacer-1
 
 
     /* Get screens array from prototype */
     screens = prototype.screens;
 
-     /* Initially draw the canavs */
-     update();
+    /* Initially draw the canavs */
+    screenImg = new Image();
+    screenImg.src = $("#"+screens[screenIndex].screen_id).attr("src");  
+    screenImg.onload = function(){
+      update();
+    };
 
      /* Draw the routing list - we only need to do this once */
      drawRoutingList();
   }
-
 
   /* Updates the navigation button text appropriately as well as 
    * Updates the click areas given the current state */
   function update(){
     drawClickAreas();
     drawButtons();
+    $("#route-screen-name").html(screens[screenIndex].screen_name);
   }
 
   function drawClickAreas(){
     /* Clear the canvas */
     context.clearRect(0,0,canvas.width, canvas.height);
+
+    /* Draw the current screen in the background */
+    var scaledWidth, scaledHeight;
+    //scaledWidth = screenImg.width * canvas.height / screenImg.height;
+    //scaledHeight = canvas.height;
+    scaledWidth = canvas.width;
+    scaledHeight = screenImg.height * canvas.width / screenImg.width;
+    context.drawImage(screenImg,0,0,scaledWidth, scaledHeight);
 
     var clickAreas = screens[screenIndex].clickableAreas;
 
@@ -104,7 +116,6 @@ var routeclickables = function(){
     return "INVALID";
   }
 
-
   /* Updates the prototype datamodel assinging the clickarea's destination with the route */
   this.assignRoute = function(screen_id){
     prototype.screens[screenIndex].clickableAreas[clickAreaIndex].destination_id = screen_id;
@@ -118,6 +129,7 @@ var routeclickables = function(){
 
   /* Advances to the next state in the process */
   this.next = function(screen_id, screenName){
+
     if(routing){
       displayScreen("9");
       routing = false;
@@ -136,7 +148,6 @@ var routeclickables = function(){
         });
 
         screenIndex++;
-        addName(screens[screenIndex].name);
         clickAreaIndex = 0;
       }
 
@@ -161,9 +172,5 @@ var routeclickables = function(){
       clickAreaIndex--;
     routing = false;
     update();
-  }
-
-  function addName(name){
-    $("#route-screen-name").html(""+name);
   }
 }

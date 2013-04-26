@@ -45,6 +45,7 @@ function saveNamedScreen(){
             screen.image_path = data.image_path;
             screen.clickableAreas = [];
             prototype.screens.push(screen);
+            console.log(JSON.stringify(prototype));
         } 
     });
 

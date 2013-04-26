@@ -12,12 +12,12 @@ function displayScreen(screenNum){
     /* Transition functions 
      * Any step specific functionality should be initiated here */
 
-    if(screenNum === "6"){
+    if(screenNum === "7"){
         s = new setclickables();
         s.setup();
     }
+
     else if(screenNum === "8"){
-        /* TODO: Add functions to remove listeners/timers */
         r = new routeclickables();
         r.setup();
     }

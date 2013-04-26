@@ -4,14 +4,14 @@ var setclickables = function(){
   var clickAreas = [];
   var currentClickArea;
   var closeImg;
-  var img;
-  //var imgloaded = false;
+  var screenImg;
 
   /* This array is filled in by the server when the screens are created
   /* Each element of this array contains: 
   /* screen id and screen name */
   var currentScreenIndex = 0;
 
+  var intervalId;
 
   this.setup = function(){
     canvas = document.getElementById("c-set-clickable-area");
@@ -26,16 +26,21 @@ var setclickables = function(){
     canvas.addEventListener("touchmove",     updateDrag);
     canvas.addEventListener("touchend",      endDrag);
 
-    /* Redraw click areas at 60 FPS */
-    window.setInterval(drawClickAreas, 15);
-
     closeImg = new Image();
     closeImg.src = "img/glyphicons_free/glyphicons/png/glyphicons_192_circle_remove.png";
-    img = new Image();
-    img.src = $("#"+prototype.screens[currentScreenIndex].screen_id).attr("src");  
-    // img.onload = function(){
-    //   imgloaded = true;
-    // }
+    screenImg = new Image();
+    screenImg.src = $("#"+prototype.screens[0].screen_id).attr("src");  
+    screenImg.onload = function(){
+      /* Redraw click areas at 60 FPS */
+      var intervalId = window.setInterval(drawClickAreas, 15);
+    }
+  }
+
+  this.remove = function(){
+    canvas.removeEventListener("touchstart",    beginDrag);
+    canvas.removeEventListener("touchmove",     updateDrag);
+    canvas.removeEventListener("touchend",      endDrag);
+    window.clearInterval(intervalId);
   }
 
   /* Initializes a click area */
@@ -101,15 +106,23 @@ var setclickables = function(){
     /* Clear the canvas */
     context.clearRect(0,0,canvas.width, canvas.height);
 
-
     /* Draw the current screen in the background */
-    console.log("image loaded");
-    context.drawImage(img,0,0);
+    var scaledWidth, scaledHeight;
+    //scaledWidth = screenImg.width * canvas.height / screenImg.height;
+    //scaledHeight = canvas.height;
+    scaledWidth = canvas.width;
+    scaledHeight = screenImg.height * canvas.width / screenImg.width;
+    context.drawImage(screenImg,0,0,scaledWidth, scaledHeight);
+
     /* Draw saved click areas */
     clickAreas.forEach(function(clickArea){
       /* Draw the clickable rectangle */
-      context.fillStyle = "#EEE";
+      context.fillStyle = "rgba(186, 227, 224, .5)";
       context.fillRect(clickArea.x, clickArea.y, clickArea.width, clickArea.height);
+      context.lineWidth = 2;
+      context.strokeStyle = 'black';
+      context.stroke();
+
       /* Draw the delete button */
       context.drawImage(closeImg, clickArea.x+clickArea.width-10, clickArea.y-10);
 
@@ -117,7 +130,11 @@ var setclickables = function(){
 
     /* Draw the current click area, if it exists */
     if(currentClickArea){
-      context.fillStyle = "#FFF";
+      context.fillStyle = "rgba(255, 255, 255, .5)";
+      context.lineWidth = 2;
+      context.strokeStyle = 'black';
+      context.stroke();
+
       context.fillRect(currentClickArea.x, currentClickArea.y, currentClickArea.width, currentClickArea.height); 
     }
   }
@@ -128,12 +145,18 @@ var setclickables = function(){
     prototype.screens[currentScreenIndex].clickableAreas = clickAreas;
     clickAreas = [];
 
-    /* Advance to next screen */
-    currentScreenIndex++;
-
     /* On completion, begin the routing phase */
-    if(currentScreenIndex == prototype.screens.length)
+    if(currentScreenIndex+1 == prototype.screens.length){
       displayScreen("8");
+      return;
+    }
+
+    /* Otherwise display the next screen */
+    screenImg.src = $("#"+prototype.screens[currentScreenIndex+1].screen_id).attr("src");  
+    screenImg.onload = function(){
+      /* Advance to next screen */
+      currentScreenIndex++;
+    }
   }
 
   /* Clears all of the current screen's clickable areas */
