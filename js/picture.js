@@ -2,7 +2,7 @@ function capturePhoto() {
 	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
 		quality: 			50,
 		destinationType: 	navigator.camera.DestinationType.DATA_URL, 
-		targetWidth: 		320,
+		targetWidth: 		480,
 		correctOrientation: true
 	});
 }
