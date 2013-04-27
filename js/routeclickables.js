@@ -5,6 +5,7 @@ var routeclickables = function(){
   var screens = [];
   var routing = false;
   var screenImg;
+  var scaleFactor;
 
 
   this.setup = function(){
@@ -44,11 +45,12 @@ var routeclickables = function(){
 
     /* Draw the current screen in the background */
     var scaledWidth, scaledHeight;
-    //scaledWidth = screenImg.width * canvas.height / screenImg.height;
-    //scaledHeight = canvas.height;
     scaledWidth = canvas.width;
     scaledHeight = screenImg.height * canvas.width / screenImg.width;
     context.drawImage(screenImg,0,0,scaledWidth, scaledHeight);
+    
+    /* Set the scale factor */
+    scaleFactor = scaledWidth/screenImg.width;
 
     var clickAreas = screens[screenIndex].clickableAreas;
 
@@ -72,7 +74,7 @@ var routeclickables = function(){
         context.fillStyle = "rgba(181,181,181,.5)";
       }
 
-      context.fillRect(clickArea.x, clickArea.y, clickArea.width, clickArea.height);
+      context.fillRect(clickArea.x*scaleFactor, clickArea.y*scaleFactor, clickArea.width*scaleFactor, clickArea.height*scaleFactor);
     }
 
   }

@@ -17,6 +17,10 @@
 	<script type="text/javascript" src="js/picture.js"></script>
 	<script type="text/javascript" src="js/setclickables.js"></script>
 	<script type="text/javascript" src="js/routeclickables.js"></script>
+    <script type="text/javascript" src="js/myprototypes.js"></script>
+    <script type="text/javascript" src="js/createtask.js"></script>
+    <script type="text/javascript" src="js/taskdetails.js"></script>
+    <script type="text/javascript" src="js/tasklist.js"></script>
 
     <!-- Onload -->
 	<script type="text/javascript">
@@ -30,13 +34,11 @@
                 console.log("resizing");
                 if($(window).height()<screen_height){
                     $(".instruction-nav").each(function(){
-                        console.log("Show",this);
                         $(this).hide();
                     });
                 }
                 else{
                     $(".instruction-nav").each(function(){
-                        console.log("Hide",this);
                         $(this).show();
                     });
                 }
@@ -109,7 +111,7 @@
 			</div>
 
 			<div class="home-icon">
-				<a onclick="#">
+				<a onclick="displayScreen('12')">
 					<img src="img/noun_project_10986.png" width="100px" height="100px">
 					<p>	My Prototypes </p>
 				</a>
@@ -306,7 +308,7 @@
     </div>
 
 
-    <!-- [11] Done!
+    <!-- [11] Done Creating!
     ========================================================================-->
     <div id="11" class="step">
 	    <div class="headline">
@@ -326,6 +328,181 @@
 	        <button class="btn">Share</button>
 	    </div>
 	</div>
+
+   <!-- [12] My Prototypes
+    ========================================================================-->
+    <div id="12" class="step">
+        <div class="nav-container">
+            <div class="nav">My Prototypes</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <ul id="prototype-list">
+        </ul>
+    </div>
+
+
+    <!-- [13] Prototype Options
+    ========================================================================-->
+    <div id="13" class="step">
+        <div class="nav-container">
+            <div class="nav">Prototype Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div id="prototype-options">
+            <!-- Include? -->
+            <button class="btn">View Prototype Info</button><br/><br/>
+            <button class="btn" onclick="displayScreen('17')">View Tasks</button><br/><br/>
+            <button class="btn" onclick="displayScreen('14')">Add a Task</button><br/><br/>
+        </div>
+    </div>
+
+
+    <!-- [14] Create Task
+    ========================================================================-->
+    <div id="14" class="step">
+        <div class="nav-container">
+            <div class="nav">Prototype Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <div id="create-task">
+            <p>
+                Name <br/>
+                <input id="taskNameInput" type="text" name="username"required></input><br/>
+            </p>
+
+            <p>
+            Description<br/>
+            <textarea id="taskDescInput" type="password" name="description" rows="4"></textarea><br/>
+            </p>
+
+            <p>
+            Start Screen<br/>
+            <select id="startScreenInput">
+                <!--
+                <option value="screen_id">Screen 1</option>
+                <option value="screen_id">Screen 2</option>
+                <option value="screen_id">Screen 3</option>
+                <option value="screen_id">Screen 4</option>
+                -->
+            </select>
+            </p>
+
+
+            <p>
+            End Screen<br/>
+            <select id="endScreenInput">
+                <!--
+                <option value="screen_id">Screen 1</option>
+                <option value="screen_id">Screen 2</option>
+                <option value="screen_id">Screen 3</option>
+                <option value="screen_id">Screen 4</option>
+                -->
+            </select>
+            </p>
+            
+            <p>
+                You can use Mechanical Turk to easily deploy this task to the masses. Use the button below to toggle Turk options.<br/>
+                <button class="btn" id="turkToggleBtn" onclick="toggleTurkOptions()">Enable Turk</button>
+            </p>
+
+            <p class="turk">
+                Reward on Completion<br/>
+                $<input type="number"></input>
+            </p>
+
+            <p class="turk">
+                Max Participants<br/>
+                <input type="number"></input>
+            </p>
+
+
+            <p>
+                <button class="btn" onclick="createTask()">Create Task</button>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- [15] Task Created!
+    ========================================================================-->
+    <div id="15" class="step">
+        <div class="nav-container">
+            <div class="nav">Task Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+
+        <div class="headline">
+            <h1>Task Created!</h1>
+        </div>
+        <div class="description">
+            You can preview the task, or view its details.
+        </div>
+        <div class="instruction-nav">
+            <button class="btn" onclick="#">Preview Task</button>
+            <button class="btn" onclick="displayScreen('16')">View Task Details</button>
+        </div>
+    </div>
+
+
+
+    <!-- [16] Task Details
+    ========================================================================-->
+    <div id="16" class="step">
+        <div class="nav-container">
+            <div class="nav">Task Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        
+        <p>
+            <b>Task Name:</b><br/>
+            <div id="taskName"></div>
+        </p>
+        <p>
+            <b>Description:</b><br/>
+            <div id="taskDesc"></div>
+        </p>
+        <p>
+            <b>Start Screen:</b><br/>
+            <div id="taskStartScreen"></div>
+        </p>
+        <p>
+            <b>End Screen:</b><br/>
+            <div id="taskEndScreen"></div>
+        </p>    
+
+        <!-- Add Turk info here --> 
+
+        <div class="instruction-nav">
+            <button class="btn" onclick="#">Preview Task</button>
+            <button class="btn" onclick="displayScreen('18')">View Analytics</button>
+        </div>
+
+    </div>
+
+
+    <!-- [17] Task List
+    ========================================================================-->
+    <div id="17" class="step">
+        <div class="nav-container">
+            <div class="nav">Task Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+        <ul id="task-list">
+        </ul>
+        
+    </div>
+
+
+    <!-- [18] Analytics
+    ========================================================================-->
+    <div id="18" class="step">
+        <div class="nav-container">
+            <div class="nav">Task Name Here</div>
+        </div>
+        <div class="nav-spacer-1"></div>
+
+        
+    </div>
 
 </body>
 </html>

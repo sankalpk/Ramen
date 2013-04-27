@@ -13,6 +13,8 @@ var setclickables = function(){
 
   var intervalId;
 
+  var scaleFactor;
+
   this.setup = function(){
     canvas = document.getElementById("c-set-clickable-area");
     context = canvas.getContext("2d");
@@ -56,7 +58,7 @@ var setclickables = function(){
       /* Only allow 1 finger gesture */
       if (ev.targetTouches.length == 1) {
           var touch = ev.targetTouches[0];
-          currentClickArea = new clickArea(touch.pageX, touch.pageY-40, 0, 0);
+          currentClickArea = new clickArea(touch.pageX/scaleFactor, (touch.pageY-40)/scaleFactor, 0, 0);
       }
   }
 
@@ -64,8 +66,8 @@ var setclickables = function(){
       /* Only allow 1 finger gesture */
       if (ev.targetTouches.length == 1) {
           var touch = ev.targetTouches[0];
-          currentClickArea.width = touch.pageX-currentClickArea.x;
-          currentClickArea.height = touch.pageY-currentClickArea.y-40;
+          currentClickArea.width = (touch.pageX/scaleFactor)-currentClickArea.x;
+          currentClickArea.height = (touch.pageY/scaleFactor)-currentClickArea.y-(40/scaleFactor);
       }
   }
 
@@ -99,7 +101,9 @@ var setclickables = function(){
 
   /* Given a click area, returns the location of its delete button */
   function getDeleteLocation(clickArea){
-    return {"x": clickArea.x+clickArea.width-10, "y":clickArea.y-10};
+    return {"x": (scaleFactor*(clickArea.x+clickArea.width)-10), 
+            "y": (scaleFactor*clickArea.y)-10
+    };
   }
 
   function drawClickAreas(){
@@ -108,23 +112,24 @@ var setclickables = function(){
 
     /* Draw the current screen in the background */
     var scaledWidth, scaledHeight;
-    //scaledWidth = screenImg.width * canvas.height / screenImg.height;
-    //scaledHeight = canvas.height;
     scaledWidth = canvas.width;
     scaledHeight = screenImg.height * canvas.width / screenImg.width;
     context.drawImage(screenImg,0,0,scaledWidth, scaledHeight);
+
+    /* Set the scale factor */
+    scaleFactor = scaledWidth/screenImg.width;
 
     /* Draw saved click areas */
     clickAreas.forEach(function(clickArea){
       /* Draw the clickable rectangle */
       context.fillStyle = "rgba(186, 227, 224, .5)";
-      context.fillRect(clickArea.x, clickArea.y, clickArea.width, clickArea.height);
+      context.fillRect(clickArea.x*scaleFactor, clickArea.y*scaleFactor, clickArea.width*scaleFactor, clickArea.height*scaleFactor);
       context.lineWidth = 2;
       context.strokeStyle = 'black';
       context.stroke();
 
       /* Draw the delete button */
-      context.drawImage(closeImg, clickArea.x+clickArea.width-10, clickArea.y-10);
+      context.drawImage(closeImg, scaleFactor*(clickArea.x+clickArea.width)-10, scaleFactor*clickArea.y-10);
 
     });
 
@@ -135,7 +140,7 @@ var setclickables = function(){
       context.strokeStyle = 'black';
       context.stroke();
 
-      context.fillRect(currentClickArea.x, currentClickArea.y, currentClickArea.width, currentClickArea.height); 
+      context.fillRect(currentClickArea.x*scaleFactor, currentClickArea.y*scaleFactor, currentClickArea.width*scaleFactor, currentClickArea.height*scaleFactor); 
     }
   }
 

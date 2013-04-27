@@ -48,6 +48,8 @@ ul{
   width: 100%;
   border-bottom: 1px solid black;
   background-color: #EEE;
+  text-align: center;
+  font-weight: 600;
 }
 
 .nav-spacer-1{
@@ -305,7 +307,7 @@ input[type=submit]{
   position: absolute;
   top: 40px;
   left: 0px;
-  background-color: gray; 
+  background-color: black; 
 }
 
 /* Route Clickable Areas
@@ -316,7 +318,7 @@ input[type=submit]{
   position: absolute;
   top: 40px;
   left: 0px;
-  background-color: gray; 
+  background-color: black; 
 }
 
 ul#route-list li{
@@ -339,3 +341,60 @@ ul#route-list li{
 
 /* Done
  * --------------------------------------------------------------------------*/
+
+
+
+/* My Prototypes
+ * --------------------------------------------------------------------------*/
+ul#prototype-list{
+  -webkit-padding-start: 0;
+}
+
+ul#prototype-list li{
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+ul#prototype-list li:first-child{
+  margin-top: 10px;
+}
+
+#prototype-options{
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Create Task
+ * --------------------------------------------------------------------------*/
+#create-task{
+  margin-top: 30px;
+}
+
+#create-task p{
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+.turk{
+  display: none;
+}
+
+/* View Tasks
+ * --------------------------------------------------------------------------*/
+ul#task-list{
+  -webkit-padding-start: 0;
+}
+
+ul#task-list li{
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+ul#task-list li:first-child{
+  margin-top: 10px;
+}
+
