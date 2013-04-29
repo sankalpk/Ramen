@@ -1,7 +1,5 @@
 var isTurked = false;
 var currentTask;
-var currentTaskStartScreenName;
-var currentTaskStartScreenName;
 
 function setupTaskCreate(){
     /* Set Start and End Screen options based on the current prototype */
@@ -41,15 +39,14 @@ function createTask(){
         url: RAMEN_PATH.server + "/tasks",
         success: function(data){
             console.log(data);
+            currentTask = data;
+            $("#try-created-task").attr("rel", RAMEN_PATH.server + "/tasks/view/" + currentTask._id);
+            $("#15 .nav").html(currentTask.name);
         } 
     });
 
     //TODO: Send Turk info to node
 
-
-    currentTask = data;
-    currentTaskStartScreenName = $('#startScreenInput').val();
-    currentTaskEndScreenName = $('#endScreenInput').val();
     displayScreen("15");
 }
 

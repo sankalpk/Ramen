@@ -21,6 +21,7 @@
     <script type="text/javascript" src="js/createtask.js"></script>
     <script type="text/javascript" src="js/taskdetails.js"></script>
     <script type="text/javascript" src="js/tasklist.js"></script>
+    <script type="text/javascript" src="js/heatmap.js"></script>
 
     <!-- Onload -->
 	<script type="text/javascript">
@@ -42,8 +43,21 @@
                         $(this).show();
                     });
                 }
-            }) 
+            });
+
+            $('.link').on('click', function() {
+                url = $(this).attr("rel");
+                console.log(url);
+                loadURL(url);
+            });
+
+
 		}
+
+        function loadURL(url){
+            navigator.app.loadUrl(url, { openExternal:true });
+            return false;
+        } 
 	</script>
 
 </head>
@@ -120,14 +134,14 @@
 
 		<div class="home-row">
 			<div class="home-icon">
-				<a onclick="#">
+				<a class="link" href="#" rel="http://www.google.com">
 					<img src="img/noun_project_2778.png" width="90px" height="90px" style="margin-bottom:10px">
 					<p> Analytics </p>
 				</a>
 			</div>
 
 			<div class="home-icon">
-				<a onclick="#">
+				<a href="#">
 					<img src="img/noun_project_11801.png" width="90px" height="90px" style="margin-bottom:10px">
 					<p> Settings </p>
 				</a>
@@ -319,13 +333,13 @@
 	            You can access your prototype by visiting the link. Click to copy.
 	        </p>
 	        <p>
-	            <input type="url" value="http://www.google.com"></input>
+	            <input id="prototype-url" type="url" value=""></input>
 	        </p>
 	    </div>
 	    <div class="instruction-visual"></div>
 	    <div class="instruction-nav">
-	        <button class="btn">Try it now</button>
-	        <button class="btn">Share</button>
+	        <button id="try-created-proto" class="btn link" rel="">Try it now</button>
+	        <button class="btn" onclick="displayScreen(2);">Home</button>
 	    </div>
 	</div>
 
@@ -333,7 +347,10 @@
     ========================================================================-->
     <div id="12" class="step">
         <div class="nav-container">
-            <div class="nav">My Prototypes</div>
+            <div class="nav">
+                My Prototypes
+                <button class="btn" onclick="displayScreen(2);">Home</button>
+            </div>
         </div>
         <div class="nav-spacer-1"></div>
         <ul id="prototype-list">
@@ -345,7 +362,9 @@
     ========================================================================-->
     <div id="13" class="step">
         <div class="nav-container">
-            <div class="nav">Prototype Name Here</div>
+            <div class="nav">
+                Prototype Name Here
+            </div>
         </div>
         <div class="nav-spacer-1"></div>
         <div id="prototype-options">
@@ -438,7 +457,7 @@
             You can preview the task, or view its details.
         </div>
         <div class="instruction-nav">
-            <button class="btn" onclick="#">Preview Task</button>
+            <button id="try-created-task" class="btn link" rel="">Preview Task</button>
             <button class="btn" onclick="displayScreen('16')">View Task Details</button>
         </div>
     </div>
@@ -500,7 +519,28 @@
             <div class="nav">Task Name Here</div>
         </div>
         <div class="nav-spacer-1"></div>
+        
 
+        <p>
+            <b>Screen Touch Distribution</b><br/>
+            <select id="heatmapScreenSelect">
+                <!--
+                <option value="screen_id">Screen 1</option>
+                <option value="screen_id">Screen 2</option>
+                <option value="screen_id">Screen 3</option>
+                <option value="screen_id">Screen 4</option>
+                -->
+            </select>
+            <button>Get Heatmap</button>
+            <canvas>
+
+            </canvas>
+        </p>
+        <p>
+            <b>Questionnaire Results:</b><br/>
+        </p>    
+
+        <!-- Add Turk info here --> 
         
     </div>
 

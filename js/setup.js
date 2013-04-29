@@ -1,5 +1,5 @@
 var RAMEN_PATH = {
-	"server"	: 'http://128.237.235.214:3000',
+	"server"	: '192.168.2.4:3000',
 };
 
 var prototype = new Object();

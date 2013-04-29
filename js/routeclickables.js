@@ -6,6 +6,7 @@ var routeclickables = function(){
   var routing = false;
   var screenImg;
   var scaleFactor;
+  var screenSrc = [];
 
 
   this.setup = function(){
@@ -19,6 +20,10 @@ var routeclickables = function(){
 
     /* Get screens array from prototype */
     screens = prototype.screens;
+
+    for(var i=0; i<screens.length; i++){
+      screenSrc[i] = $("#"+screens[i].screen_id).attr("src");
+    }
 
     /* Initially draw the canavs */
     screenImg = new Image();
@@ -133,9 +138,9 @@ var routeclickables = function(){
   this.next = function(screen_id, screenName){
 
     if(routing){
-      displayScreen("9");
       routing = false;
       clickAreaIndex++;
+      displayScreen("9");
 
       /* Advance to the next screen upload clickableAreas for this screen to the server*/
       if(clickAreaIndex === screens[screenIndex].clickableAreas.length){
@@ -158,7 +163,16 @@ var routeclickables = function(){
         displayScreen("11");
       }
       else{
-        update();
+
+        if(screenImg.src === screenSrc[screenIndex]){
+          update();
+          return;
+        }
+        else{ 
+          screenImg.onload = function(){update();};
+          screenImg.src = screenSrc[screenIndex];
+        }
+
       }
 
     }
