@@ -11,7 +11,7 @@ function displayScreen(screenNum){
 
     /* Transition functions 
      * Any step specific functionality should be initiated here */
-    if(screenNum === "7"){
+    if(screenNum === "6"){
         s = new setclickables();
         s.setup();
     }
@@ -23,6 +23,10 @@ function displayScreen(screenNum){
     }
     else if(screenNum === "11"){
         r = null;
+        //Clear image store
+        $("img-store").html("");
+        //Clear routing list
+        $("#route-list").html("");
         $("#prototype-url").attr("value", RAMEN_PATH.server + "/prototypes/view/" + prototype._id);
         $("#try-created-proto").attr("rel", RAMEN_PATH.server + "/prototypes/view/" + prototype._id)
     }
