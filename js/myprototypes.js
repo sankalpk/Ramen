@@ -11,7 +11,7 @@ function updatePrototypeList(){
         if(data){
             myPrototypes = data;
             var protoList = $("#prototype-list");
-
+            protoList.html("");
             for(var i=0; i<data.length; i++){
                 /* Add a list element for every exisiting prototype */
                 var protoListEl = $("<li>");

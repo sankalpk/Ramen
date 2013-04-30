@@ -9,7 +9,11 @@ function showTaskList(){
     success: function(data){
         if(data){
             myTasks = data;
+            
+            /* Reload the task list */
             var taskList = $("#task-list");
+            taskList.html("");
+
             for(var i=0; i<data.length; i++){
               /* Add a list element for every exisiting task */
                 var taskListEl = $("<li>");

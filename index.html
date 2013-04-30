@@ -382,8 +382,9 @@
         </div>
         <div class="nav-spacer-1"></div>
         <div id="prototype-options">
-            <!-- Include? -->
+            <!-- Include?
             <button class="btn">View Prototype Info</button><br/><br/>
+            -->
             <button class="btn" onclick="displayScreen('17')">View Tasks</button><br/><br/>
             <button class="btn" onclick="displayScreen('14')">Add a Task</button><br/><br/>
         </div>
@@ -494,6 +495,8 @@
             <b>Description:</b><br/>
             <div id="taskDesc"></div>
         </p>
+        
+        <!-- Add start screen and end screen info here
         <p>
             <b>Start Screen:</b><br/>
             <div id="taskStartScreen"></div>
@@ -501,13 +504,14 @@
         <p>
             <b>End Screen:</b><br/>
             <div id="taskEndScreen"></div>
-        </p>    
+        </p>
+        --->
 
         <!-- Add Turk info here --> 
 
         <div class="instruction-nav">
-            <button class="btn" onclick="#">Preview Task</button>
-            <button class="btn" onclick="displayScreen('18')">View Analytics</button>
+            <button class="btn" id="try-task">Preview Task</button>
+            <button class="btn link" onclick="displayScreen('18')">View Analytics</button>
         </div>
 
     </div>

@@ -10,6 +10,7 @@ function displayAnalytics(){
             currentPrototype = data;
             /* Set the options for the heatmap */
             var screenSelect = $("#heatmapScreenSelect");
+            screenSelect.html("");
             for(var i = 0; i< data.screens.length; i++){
                 var screenOption = $("<option>");
                 screenOption.attr("value", data.screens[i].screen_id);
@@ -20,18 +21,26 @@ function displayAnalytics(){
     });
 
     /* Question Results */
-    $("#answer-1").html(currentTask.analytics.q1_average + " / 5");
-    $("#answer-2").html(currentTask.analytics.q2_average + " / 5");
-    $("#answer-3").html(currentTask.analytics.q3_average + " / 5");
-    $("#answer-4").html(currentTask.analytics.q4_average + " / 5");
-    $("#answer-5").html(currentTask.analytics.q5_average + " / 5");
+    var rounded_q = Math.round(currentTask.analytics.q1_average * 10 ) / 10;
+    $("#answer-1").html(rounded_q + " / 5");
+    rounded_q = Math.round(currentTask.analytics.q2_average * 10 ) / 10;
+    $("#answer-2").html(rounded_q + " / 5");
+    rounded_q = Math.round(currentTask.analytics.q3_average * 10 ) / 10;
+    $("#answer-3").html(rounded_q + " / 5");
+    rounded_q = Math.round(currentTask.analytics.q4_average * 10 ) / 10;
+    $("#answer-4").html(rounded_q + " / 5");
+    rounded_q = Math.round(currentTask.analytics.q5_average * 10 ) / 10;
+    $("#answer-5").html(rounded_q + " / 5");
 
     /* Time Results */
-    console.log(Math.round( currentTask.analytics.average_time * 10 ) / 10);
-    $("#time-elapsed").html(currentTask.analytics.average_time + " seconds");
+    var rounded_sec = Math.round( currentTask.analytics.average_time * 10 ) / 10;
+    $("#time-elapsed").html(rounded_sec + " seconds");
 
     /* Total Participants */
-    $("#total-participants").html(currentTask.analytics.num_people + " people");
+    if(currentTask.analytics.num_people == 1)
+        $("#total-participants").html(currentTask.analytics.num_people + " person");
+    else
+        $("#total-participants").html(currentTask.analytics.num_people + " people");
 }
 
 /* Updates the heatmap based upon the newly selected screen */
@@ -53,8 +62,7 @@ function updateHeatmap(screen_id){
                 /* Update the tap data */
                 var tapdata = [];
                 heatmap.store.setDataSet({max: 5, data: []});
-                //heatmap.store.addDataPoint(10, 20);
-                //heatmap.store.addDataPoint(20, 30);
+
                 var taps = currentTask.analytics.taps;
                 for(var i=0; i<taps.length; i++){
                     if(screen_id === taps[i].screen_id){

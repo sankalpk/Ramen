@@ -11,6 +11,9 @@ function displayScreen(screenNum){
 
     /* Transition functions 
      * Any step specific functionality should be initiated here */
+    if(screenNum === "4"){
+        $("#prototype-name").html("");
+    }
     if(screenNum === "6"){
         s = new setclickables();
         s.setup();
@@ -43,7 +46,7 @@ function displayScreen(screenNum){
     else if(screenNum === "15"){ 
     }
     else if(screenNum === "16"){
-        $("#16 .nav").html(currentTask.name + "<button class='btn' onclick='displayScreen(2);'>");
+        $("#16 .nav").html(currentTask.name + "<button class='btn' onclick='displayScreen(2);'>Home</button>");
         showTaskDetails();   
     }
     else if(screenNum === "17"){
