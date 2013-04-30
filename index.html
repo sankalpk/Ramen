@@ -1,33 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Ramen</title>
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Mobile-related meta tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<!-- Google WebFonts -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="js/cordova-2.5.0.js"></script>
-	<script type="text/javascript" src="js/stepper.js"></script>	
-	<script type="text/javascript" src="js/setup.js"></script>
-	<script type="text/javascript" src="js/login.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/nameprototype.js"></script>
-	<script type="text/javascript" src="js/picture.js"></script>
-	<script type="text/javascript" src="js/setclickables.js"></script>
-	<script type="text/javascript" src="js/routeclickables.js"></script>
+    <meta charset="UTF-8">
+    <title>Ramen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Mobile-related meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Google WebFonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/cordova-2.5.0.js"></script>
+    <script type="text/javascript" src="js/stepper.js"></script>    
+    <script type="text/javascript" src="js/setup.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/nameprototype.js"></script>
+    <script type="text/javascript" src="js/picture.js"></script>
+    <script type="text/javascript" src="js/setclickables.js"></script>
+    <script type="text/javascript" src="js/routeclickables.js"></script>
     <script type="text/javascript" src="js/myprototypes.js"></script>
     <script type="text/javascript" src="js/createtask.js"></script>
     <script type="text/javascript" src="js/taskdetails.js"></script>
     <script type="text/javascript" src="js/tasklist.js"></script>
     <script type="text/javascript" src="js/heatmap.js"></script>
     <script type="text/javascript" src="js/getAnalytics.js"></script>
-
+    <script type="text/javascript" src="js/validation.js"></script>
     <!-- Onload -->
-	<script type="text/javascript">
+    <script type="text/javascript">
         var heatmap;
-		window.onload = function(){
+        window.onload = function(){
             screen_width = $(window).width();
             screen_height = $(window).height();
             displayScreen("0");
@@ -66,106 +66,106 @@
             };  
         
             heatmap = h337.create(config);
-		}
+        }
 
         function loadURL(url){
             navigator.app.loadUrl(url, { openExternal:true });
             return false;
         } 
-	</script>
+    </script>
 
 </head>
 <body>
-	<!-- Hidden Image Store
+    <!-- Hidden Image Store
     ========================================================================-->
-	<div id="img-store">
-	</div>
+    <div id="img-store">
+    </div>
 
-	<!-- [0] Login
+    <!-- [0] Login
     ========================================================================-->
-	<div id="0" class="step">
-		<div id="logo-container">
-			<div id="logo">
-				<img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
-				<div id="logo-text">ramen</div>
-			</div>
-		</div>
+    <div id="0" class="step">
+        <div id="logo-container">
+            <div id="logo">
+                <img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
+                <div id="logo-text">ramen</div>
+            </div>
+        </div>
 
-		<div id="login-form">
-				<input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
-				<input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
-				<button type="submit" id="loginButton" class="btn btn-block">Login</button><br/>
-		</div>
-		
-		<div id="login-form-footer">
-			Don't have an account? <a onclick="displayScreen('1')"><b>Sign up.</b></a>	
-		</div>
-	</div>
+        <div id="login-form">
+                <input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
+                <input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
+                <button type="submit" id="loginButton" class="btn btn-block">Login</button><br/>
+        </div>
+        
+        <div id="login-form-footer">
+            Don't have an account? <a onclick="displayScreen('1')"><b>Sign up.</b></a>  
+        </div>
+    </div>
 
 
 
-	<!-- [1] Register
+    <!-- [1] Register
     ========================================================================-->
-	<div id="1" class="step">
-	    <div id="logo-container">
-	        <div id="logo">
-	            <img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
-	            <div id="logo-text">ramen</div>
-	        </div>
-	    </div>
+    <div id="1" class="step">
+        <div id="logo-container">
+            <div id="logo">
+                <img src="img/noun_project_1600.png" alt="Ramen Logo" width="115px" height="100px">
+                <div id="logo-text">ramen</div>
+            </div>
+        </div>
 
-	    <div id="login-form">
-	            <input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
-	            <input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
-	            <button type="submit" id="registerButton" class="btn btn-block">Register</button><br/>
-	    </div>
-	    
-	    <div id="login-form-footer">
-	        Already have an account? <a onclick="displayScreen('0')"><b>Log in.</b></a>  
-	    </div>
-	</div>
+        <div id="login-form">
+                <input id="usernameInput" type="text" name="username" placeholder="Username" required></input><br/>
+                <input id="passwordInput" type="password" name="password" placeholder="Password" required></input><br/>
+                <button type="submit" id="registerButton" class="btn btn-block">Register</button><br/>
+        </div>
+        
+        <div id="login-form-footer">
+            Already have an account? <a onclick="displayScreen('0')"><b>Log in.</b></a>  
+        </div>
+    </div>
 
 
-	<!-- [2] Home
+    <!-- [2] Home
     ========================================================================-->
-	<div id="2" class="step">
-		<div id="home-buttons">
-		<div class="home-row">
-			<div class="home-icon">
-				<a onclick="displayScreen('3')">
-					<img src="img/noun_project_3927.png" width="100px" height="100px">
-					<p>Create</p>
-				</a>
-			</div>
+    <div id="2" class="step">
+        <div id="home-buttons">
+        <div class="home-row">
+            <div class="home-icon">
+                <a onclick="displayScreen('3')">
+                    <img src="img/noun_project_3927.png" width="100px" height="100px">
+                    <p>Create</p>
+                </a>
+            </div>
 
-			<div class="home-icon">
-				<a onclick="displayScreen('12')">
-					<img src="img/noun_project_10986.png" width="100px" height="100px">
-					<p>	My Prototypes </p>
-				</a>
-			</div>
-		</div>
+            <div class="home-icon">
+                <a onclick="displayScreen('12')">
+                    <img src="img/noun_project_10986.png" width="100px" height="100px">
+                    <p> My Prototypes </p>
+                </a>
+            </div>
+        </div>
 
-		<div class="home-row">
-			<div class="home-icon">
-				<a class="link" href="#" rel="http://www.google.com">
-					<img src="img/noun_project_2778.png" width="90px" height="90px" style="margin-bottom:10px">
-					<p> Analytics </p>
-				</a>
-			</div>
+        <div class="home-row">
+            <div class="home-icon">
+                <a class="link" href="#" rel="http://www.google.com">
+                    <img src="img/noun_project_2778.png" width="90px" height="90px" style="margin-bottom:10px">
+                    <p> Analytics </p>
+                </a>
+            </div>
 
-			<div class="home-icon">
-				<a href="#">
-					<img src="img/noun_project_11801.png" width="90px" height="90px" style="margin-bottom:10px">
-					<p> Settings </p>
-				</a>
-			</div>
-		</div>
-		</div>
-	</div>
+            <div class="home-icon">
+                <a href="#">
+                    <img src="img/noun_project_11801.png" width="90px" height="90px" style="margin-bottom:10px">
+                    <p> Settings </p>
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
 
 
-	<!-- [3] Name Prototype
+    <!-- [3] Name Prototype
     ========================================================================-->
     <div id="3" class="step">
         <div class="nav-container">
@@ -180,7 +180,7 @@
             <input id="prototype-name" type="text"></input>
         </div>
         <div class="instruction-nav">
-            <button class="btn" onclick="namePrototype()">Next</button>
+            <button class="btn" onclick="inputRequired(['prototype-name'],namePrototype);">Next</button>
         </div>
     </div>
 
@@ -224,8 +224,8 @@
         </div>
 
         <div class="instruction-nav">
-            <button class="btn" onclick="saveAndCapture();">Save and Capture Next Screen</button><br/>
-            <button class="btn" onclick="saveAndFinish();">Save and Finish Capturing</button>
+            <button class="btn" onclick="inputRequired(['screen-name'],saveAndCapture);">Save and Capture Next Screen</button><br/>
+            <button class="btn" onclick="inputRequired(['screen-name'],saveAndFinish);">Save and Finish Capturing</button>
         </div>
     </div>
 
@@ -313,7 +313,7 @@
         </div>
         <div class="nav-spacer-1"></div>
         <ul id="route-list">
-        	<!--
+            <!--
             <li>
                 <a href="">
                     <img class="s" src=""><p>Screen 1</p>
@@ -331,7 +331,7 @@
                     <img class="s" src=""><p>Screen 4</p>
                 </a>
             </li>
-        	-->
+            -->
         </ul>
     </div>
 
@@ -339,23 +339,23 @@
     <!-- [11] Done Creating!
     ========================================================================-->
     <div id="11" class="step">
-	    <div class="headline">
-	        <h1>Prototype Created!</h1>
-	    </div>
-	    <div class="description">
-	        <p>
-	            You can access your prototype by visiting the link. Click to copy.
-	        </p>
-	        <p>
-	            <input id="prototype-url" type="url" value=""></input>
-	        </p>
-	    </div>
-	    <div class="instruction-visual"></div>
-	    <div class="instruction-nav">
-	        <button id="try-created-proto" class="btn link" rel="">Try it now</button>
-	        <button class="btn" onclick="displayScreen(2);">Home</button>
-	    </div>
-	</div>
+        <div class="headline">
+            <h1>Prototype Created!</h1>
+        </div>
+        <div class="description">
+            <p>
+                You can access your prototype by visiting the link. Click to copy.
+            </p>
+            <p>
+                <input id="prototype-url" type="url" value=""></input>
+            </p>
+        </div>
+        <div class="instruction-visual"></div>
+        <div class="instruction-nav">
+            <button id="try-created-proto" class="btn link" rel="">Try it now</button>
+            <button class="btn" onclick="displayScreen(2);">Home</button>
+        </div>
+    </div>
 
    <!-- [12] My Prototypes
     ========================================================================-->
@@ -450,7 +450,7 @@
 
 
             <p>
-                <button class="btn" onclick="createTask()">Create Task</button>
+                <button class="btn" onclick="validateTask(createTask);">Create Task</button>
             </p>
         </div>
     </div>
