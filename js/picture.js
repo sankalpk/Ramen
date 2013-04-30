@@ -21,7 +21,7 @@ function onPhotoDataSuccess(imageData) {
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    capturePhoto();
 }
 
 /* Uploads the named screen from the preview to the database */

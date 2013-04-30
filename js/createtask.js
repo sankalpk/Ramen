@@ -41,15 +41,16 @@ function createTask(){
         url: RAMEN_PATH.server + "/tasks",
         success: function(data){
             console.log(data);
-            var currentTask = data;
+            currentTask = data;
             var taskURL = RAMEN_PATH.server + "/tasks/view/" + currentTask._id
             $("#try-created-task").attr("rel", taskURL);
             $("#15 .nav").html(currentTask.name);
 
-            var reward = $("#turkReward").val();
-            var maxAssignments = $("#turkMax").val();
-            sendTurkRequest(reward, maxAssignments, taskURL);
-
+            if(isTurked){
+                var reward = $("#turkReward").val();
+                var maxAssignments = $("#turkMax").val();
+                sendTurkRequest(reward, maxAssignments, taskURL);
+            }
             displayScreen("15");
         } 
     });

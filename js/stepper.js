@@ -38,6 +38,7 @@ function displayScreen(screenNum){
     }
     else if(screenNum === "13"){
         $("#13 .nav").html(currentPrototype.name + "<button class='btn' onclick='displayScreen(2);'>Home</button>");
+        $("#try-proto").attr("rel", RAMEN_PATH.server + "/prototypes/view/" + currentPrototype._id);
     }
     else if(screenNum === "14"){
         $("#14 .nav").html("Task for " + currentPrototype.name + "<button class='btn' onclick='displayScreen(2);'>Home</button>");

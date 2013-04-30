@@ -6,7 +6,7 @@ function inputRequired(ids, callback)
 	ids.forEach(function(id){
 		var input = $("#"+id).val();
 		if(input === ""&&formFine === true) {
-			alert("Required form field empty. Please fill them out. "+id);
+			alert("Required form field empty. Please fill them out.");
 			formFine = false;
 		} 
 	});
