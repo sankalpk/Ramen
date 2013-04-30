@@ -39,15 +39,18 @@ function createTask(){
         url: RAMEN_PATH.server + "/tasks",
         success: function(data){
             console.log(data);
-            currentTask = data;
-            $("#try-created-task").attr("rel", RAMEN_PATH.server + "/tasks/view/" + currentTask._id);
+            var currentTask = data;
+            var taskURL = RAMEN_PATH.server + "/tasks/view/" + currentTask._id
+            $("#try-created-task").attr("rel", taskURL);
             $("#15 .nav").html(currentTask.name);
+
+            var reward = $("#turkReward").val();
+            var maxAssignments = $("#turkMax").val();
+            sendTurkRequest(reward, maxAssignments, taskURL);
+
+            displayScreen("15");
         } 
     });
-
-    //TODO: Send Turk info to node
-
-    displayScreen("15");
 }
 
 function toggleTurkOptions(){
@@ -60,4 +63,15 @@ function toggleTurkOptions(){
         $(".turk").css("display", "none");
         $("#turkToggleBtn").html("Enable Turk");
     }
+}
+
+function sendTurkRequest(reward,maxAssignments, taskURL){
+    $.ajax({
+        type: "post",
+        data: {reward: reward, maxAssignments: maxAssignments, taskURL: taskURL},
+        url: RAMEN_PATH.server + "/sendHit",
+        success: function(data){
+            console.log(data);
+        } 
+    });
 }
