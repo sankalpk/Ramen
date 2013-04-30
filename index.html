@@ -22,9 +22,11 @@
     <script type="text/javascript" src="js/taskdetails.js"></script>
     <script type="text/javascript" src="js/tasklist.js"></script>
     <script type="text/javascript" src="js/heatmap.js"></script>
+    <script type="text/javascript" src="js/getAnalytics.js"></script>
 
     <!-- Onload -->
 	<script type="text/javascript">
+        var heatmap;
 		window.onload = function(){
             screen_width = $(window).width();
             screen_height = $(window).height();
@@ -51,7 +53,19 @@
                 loadURL(url);
             });
 
-
+            /* Heat maps */
+            var config ={
+                element: document.getElementById("heatmap-container"),
+                radius: 30,
+                opacity: 50,
+                visible: true,
+                legend: {
+                    position: 'br',
+                    title: 'Tap Distribution'
+                }   
+            };  
+        
+            heatmap = h337.create(config);
 		}
 
         function loadURL(url){
@@ -519,26 +533,48 @@
             <div class="nav">Task Name Here</div>
         </div>
         <div class="nav-spacer-1"></div>
-        
 
+        <p>
+            <b>Total number of Participants:</b>
+            <div id="total-participants"></div>
+        </p>
+        
         <p>
             <b>Screen Touch Distribution</b><br/>
             <select id="heatmapScreenSelect">
                 <!--
                 <option value="screen_id">Screen 1</option>
                 <option value="screen_id">Screen 2</option>
-                <option value="screen_id">Screen 3</option>
-                <option value="screen_id">Screen 4</option>
+                ...
                 -->
             </select>
-            <button>Get Heatmap</button>
-            <canvas>
-
-            </canvas>
+            <button class="btn" id="get-heatmap" onclick="updateHeatmap($('#heatmapScreenSelect option:selected').attr('value'));">Get Heatmap</button>
+            
+            <div id="heatmap-container" style="width:320px; height:480px; background-color: black; position:relative;">
+                <canvas id="heatmap" width="320px" height="480px"></canvas>
+            </div>
         </p>
         <p>
             <b>Questionnaire Results:</b><br/>
+            <p>The application uses words and phrases I am familiar with.</p>
+            <div class="questionaire-result" id="answer-1"></div>
+
+            <p>The application helps me easily recover from mistakes.</p>
+            <div class="questionaire-result" id="answer-2"></div>
+
+            <p>I understand what the application was doing on each screen.</p>
+            <div class="questionaire-result" id="answer-3"></div>
+
+            <p>The application’s options and functionality were easy to find.</p>
+            <div class="questionaire-result" id="answer-4"></div>
+
+            <p>The application does not contain irrelevant information.</p>
+            <div class="questionaire-result" id="answer-5"></div>
         </p>    
+        <p>
+            <b>Average time elapsed:</b><br/>
+            <div id="time-elapsed"></div>
+        </p>
 
         <!-- Add Turk info here --> 
         

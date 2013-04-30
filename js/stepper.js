@@ -52,5 +52,6 @@ function displayScreen(screenNum){
     }
     else if(screenNum === "18"){
         $("#18 .nav").html("Analytics for " + currentPrototype.name + "<button class='btn' onclick='displayScreen(2);'>Home</button>");
+        displayAnalytics();
     }
 }
