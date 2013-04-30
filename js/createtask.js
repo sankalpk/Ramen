@@ -4,7 +4,9 @@ var currentTask;
 function setupTaskCreate(){
     /* Set Start and End Screen options based on the current prototype */
     var startScreenInput = $("#startScreenInput");
+    startScreenInput.html("");
     var endScreenInput = $("#endScreenInput");
+    endScreenInput.html("");
     for(var i = 0; i<currentPrototype.screens.length; i++){
         var name = currentPrototype.screens[i].name;
         var screen_id = currentPrototype.screens[i].screen_id;
