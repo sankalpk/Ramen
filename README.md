@@ -1,5 +1,5 @@
 Ramen
 =====
-Ramen is a mobile application that makes it easy to user test low fidelity UI
-protototypes. This is accomplished by converting your paper sketches into an
-interactive app and then deploying it at a given URL.
+Ramen is a mobile application that allows you as a designer to create interactive mobile prototypes from paper sketches. 
+
+After the prototypes are created, you can create tasks to test your application and send them to friends or Mechanical Turkers. When the tasks are completed, your analytics dashboard will display the user feedback and a heat map of all of the interactions.
